@@ -1,5 +1,11 @@
 require('dotenv').config();
-const {Client, Intents, WebhookClient} = require('discord.js');
+
+const {Client, Intents, WebhookClient, Collection} = require('discord.js')
+const fs = require('fs');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v10'); //v9?
+const fetch = require('node-fetch');
+const axios = require('axios')
 
 //create new client
 const client = new Client({
@@ -15,54 +21,60 @@ const webhookClient = new WebhookClient({
     token: process.env.WEBHOOK_TOKEN 
 });
 
+//command handler
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commands = [];
+client.commands = new Collection();
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    commands.push(command.data.toJSON());
+    client.commands.set(command.data.name, command);
+}
 
-const PREFIX = '$';
 
-client.on('ready', () => {
+client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  const CLIENT_ID = client.user.id; //gets current bots client ID.
+  const rest = new REST({
+      version: '10'
+  }).setToken(process.env.BOT_TOKEN);
+
+  (async () => {
+      try {
+          if (process.env.ENV === 'production') {
+              await rest.put(Routes.applicationGuildCommands(CLIENT_ID), {
+                  body: commands
+              });
+              console.log('Succesfully registered commands globally.');
+          } else {
+              await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID), {
+                  body: commands
+              });
+              console.log('Succesfully registered commands locally.')
+          }
+      } catch (err) {
+        if (err) console.error(err);
+      }
+  })();
 });
 
-client.on('messageCreate', (message) => {
-    
-    //console.log(`[${message.author.tag}]: ${message.content}`);
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
 
-    //stops the infinite response from bot, author is user-type
-    if (message.author.bot) return;
+    const command = client.commands.get(interaction.commandName);
 
-    if (message.content.startsWith(PREFIX)) {
-    
-        /* parsing commands: 
-            array destructuring on commandName
-            args is an array
-            ... is a spreader operator */
-        const [commandName, ...args] = message.content
-            .trim()
-            .substring(PREFIX.length)
-            .split(/\s+/); //regex for whitespace
+    if (!command) return;
 
-        if (commandName === 'kick') {
-            if (args.length === 0) {
-                return message.reply('An ID needs to be provided')
-            };
+    try {
+        await command.execute(interaction);
+    } catch (err) {
+        if (err) console.error(err);
 
-            const member = message.guild.members.cache.get(args[0]);
-    
-            if (member) {
-                member
-                    .kick() //returns a promise
-                    .then((member) => message.channel.send(`GTFO ${member}!`)) //handles promise
-                    .catch((err) => message.channel.send('I dont have those permissions to kick that user')) //if they dont have permissions
-            } else {
-                message.channel.send('User was not found!')
-            }
-
-        } else if (commandName === 'announce') {
-            const msg = args.join(' ');
-            webhookClient.send(msg);
-        }
-
+        await interaction.reply({
+            content: 'An error occured when executing that command',
+            ephemeral: true //only visible to user who executed command
+        });
     }
-
 });
 
 
