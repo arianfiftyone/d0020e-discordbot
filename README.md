@@ -1,3 +1,3 @@
 # d0020e-discordbot
 
-TEST
+LIFE IS SHIT
