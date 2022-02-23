@@ -10,7 +10,8 @@ const axios = require('axios')
 const client = new Client({
     intents: [ 
         Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES 
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_MEMBERS,
     ]
 });
 
@@ -47,9 +48,5 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args, commands));
     }
 }
-
-
-
-
 //make sure this line is the last line
-client.login(process.env.BOT_TOKEN); //login bot using token
+client.login(process.env.BOT_TOKEN);
