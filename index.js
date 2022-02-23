@@ -2,8 +2,7 @@ require('dotenv').config();
 
 const {Client, Intents, WebhookClient, Collection} = require('discord.js')
 const fs = require('fs');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v10'); //v9?
+
 const fetch = require('node-fetch');
 const axios = require('axios')
 
@@ -22,7 +21,10 @@ const webhookClient = new WebhookClient({
 });
 
 //command handler
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs
+    .readdirSync('./commands')
+    .filter(file => file.endsWith('.js'));
+
 const commands = [];
 client.commands = new Collection();
 for (const file of commandFiles) {
@@ -31,51 +33,22 @@ for (const file of commandFiles) {
     client.commands.set(command.data.name, command);
 }
 
+//event handler
+const eventFiles = fs
+    .readdirSync('./events')
+    .filter(file => file.endsWith('.js'));
 
-client.once('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-  const CLIENT_ID = client.user.id; //gets current bots client ID.
-  const rest = new REST({
-      version: '10'
-  }).setToken(process.env.BOT_TOKEN);
+for (const file of eventFiles) {
+    const event = require(`./events/${file}`);
 
-  (async () => {
-      try {
-          if (process.env.ENV === 'production') {
-              await rest.put(Routes.applicationGuildCommands(CLIENT_ID), {
-                  body: commands
-              });
-              console.log('Succesfully registered commands globally.');
-          } else {
-              await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID), {
-                  body: commands
-              });
-              console.log('Succesfully registered commands locally.')
-          }
-      } catch (err) {
-        if (err) console.error(err);
-      }
-  })();
-});
-
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-
-    const command = client.commands.get(interaction.commandName);
-
-    if (!command) return;
-
-    try {
-        await command.execute(interaction);
-    } catch (err) {
-        if (err) console.error(err);
-
-        await interaction.reply({
-            content: 'An error occured when executing that command',
-            ephemeral: true //only visible to user who executed command
-        });
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args, commands));
+    } else {
+        client.on(event.name, (...args) => event.execute(...args, commands));
     }
-});
+}
+
+
 
 
 //make sure this line is the last line
