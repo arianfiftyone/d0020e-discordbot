@@ -21,7 +21,7 @@ module.exports = {
             .then(res => res.json())
             .then(json => weatherData = json);
         const newMemberEmbed = new MessageEmbed()
-            .setColor("#d81e5b")
+            .setColor("#FFFF")
             .setTitle(`Weather in ${interaction.options.getString('location')}`)
             .setDescription(`${interaction.user}`)
             .addFields(
@@ -41,6 +41,7 @@ module.exports = {
                     inline: true
                 },
             );
+            
         interaction.editReply({ embeds: [newMemberEmbed] });
     }
 }
