@@ -2,9 +2,12 @@ require('dotenv').config();
 
 const {Client, Intents, WebhookClient, Collection} = require('discord.js')
 const fs = require('fs');
+const Database = require('./config/Database')
+const db = new Database();
+db.connect();
 
 const fetch = require('node-fetch');
-const axios = require('axios')
+const axios = require('axios');
 
 //create new client
 const client = new Client({
