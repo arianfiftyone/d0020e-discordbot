@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const { MessageActionRow, MessageButton, MessageEmbed} = require("discord.js")
+const { MessageActionRow, MessageButton, MessageEmbed, MessageComponentInteraction, Message} = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,33 +15,34 @@ module.exports = {
     
     async execute(interaction) { 
 
+        //buttons
         const row = new MessageActionRow()
         .addComponents(
             new MessageButton()
                 .setCustomId('yes') //resembles zoombot 'value'
                 .setEmoji('✔')
-                // .setLabel('YES')
+                .setLabel('YES')
                 .setStyle('SUCCESS')
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('no')
-                .setEmoji('')
-                // .setLabel('NO')
+                .setEmoji('❌')
+                .setLabel('NO')
                 .setStyle('DANGER'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('results')
-                .setEmoji('')
-                // .setLabel('Results')
+                // .setEmoji('')
+                .setLabel('Results')
                 .setStyle('PRIMARY')
         )
-
+        
         const questionEmbed = new MessageEmbed()
             .setColor("BLUE")
             .setTitle(`${interaction.options.getString('question')}`)
-            .setDescription('To register your vote, click on YES/NO')
+            .setDescription('Click on "YES/NO" to register your vote')
             .addFields(
                 {
                     name: 'Votes on YES:',
@@ -54,9 +55,11 @@ module.exports = {
                     inline: true
                 },
             );
-        
 
-        await interaction.reply({content: `${interaction.options.getString('question')}`, embeds: [questionEmbed], components: [row] });    
+        
+        await interaction.reply({content: `${interaction.options.getString('question')}`, embeds: [questionEmbed], components: [row] })
+    
+    
     }
         
 }

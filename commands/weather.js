@@ -20,7 +20,7 @@ module.exports = {
         await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${interaction.options.getString('location')}&appid=${process.env.OPENWEATHER_ACCESSKEY}`)
             .then(res => res.json())
             .then(json => weatherData = json);
-        const newMemberEmbed = new MessageEmbed()
+        const newWeatherEmbed = new MessageEmbed()
             .setColor("#FFFF")
             .setTitle(`Weather in ${interaction.options.getString('location')}`)
             .setDescription(`${interaction.user}`)
@@ -42,6 +42,6 @@ module.exports = {
                 },
             );
             
-        interaction.editReply({ embeds: [newMemberEmbed] });
+        interaction.editReply({ embeds: [newWeatherEmbed] });
     }
 }
