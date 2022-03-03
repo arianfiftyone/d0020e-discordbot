@@ -3,7 +3,7 @@ const GuildSettings = require('../models/GuildSettings')
 module.exports = {
     name: 'guildMemberRemove',
     async execute(member) {
-        console.log(member.user)
+        //console.log(member.user)
 
         const guildSettings = await GuildSettings
             .findOne({guildId: member.guild.id
@@ -12,7 +12,6 @@ module.exports = {
         if(!guildSettings && !guildSettings.welcomeChannelId) {
             return;
         }
-        
 
         member.guild.channels.cache
             .get(guildSettings.welcomeChannelId)
