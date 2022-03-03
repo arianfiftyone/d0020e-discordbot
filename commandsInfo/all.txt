@@ -1,0 +1,9 @@
+coinflip
+commands
+info
+multipoll
+poll
+qr
+repeat
+rps
+weather

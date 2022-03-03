@@ -1,0 +1,7 @@
+Let the bot repeat your message to send private messages to the chat qroup
+
+usage in chat:
+/repeat [input]
+
+example:
+/repeat Hello World!

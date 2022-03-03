@@ -1,0 +1,12 @@
+Play a game of rock, paper, scissor with the bot
+
+Arguments:
+rock,
+paper, 
+scissor
+
+usage in chat:
+/rps [rock, paper, or scissor]
+
+example: 
+/rps rock

@@ -1,0 +1,7 @@
+get weather data from a specified city
+
+usage in chat:
+/weather [city]
+
+example:
+/weather Berlin

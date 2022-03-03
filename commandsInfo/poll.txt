@@ -1,0 +1,8 @@
+create a poll where users can upvote or downvote.
+Wehn the 'Results' button is pressed, the count is stopped and presented in chat.
+
+usage in chat:
+/poll [question?]
+
+example:
+/poll Tacos for lunch?

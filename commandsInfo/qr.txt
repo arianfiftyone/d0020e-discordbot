@@ -1,0 +1,7 @@
+Generate a QR code for a word/link of your choice
+
+Usage in chat:
+/qr [link]
+
+example:
+/qr https://nolleperioden.se

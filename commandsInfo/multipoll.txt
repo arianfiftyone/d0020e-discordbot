@@ -1,0 +1,13 @@
+create a poll with up to five options, and a right answer to the question. 
+
+if multiple right answers is specified, undefined behaviours will occur.
+
+flags:
+-r
+the flag -r indicates the right answer and can be put behind any option
+
+usage in chat:
+/multipoll [question?], [option1], [option2], ..., [option5]
+
+example:
+/multipoll what is the capital of Sweden?, Malmo, Gothenburg, Luleå, Stockholm -r, Umeå

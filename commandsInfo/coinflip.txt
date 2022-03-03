@@ -1,0 +1,12 @@
+the bot 'flips a coin' to do a pseudo-randomly genareted results of heads or tails.
+
+arguments:
+heads,
+tails,
+
+usage in chat:
+/coinflip
+/coinflip [heads or tails]
+
+example:
+/coinflip heads
