@@ -2,63 +2,61 @@ var fs = require('fs')
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('commands')
-		.setDescription('get extra info about all commands!')
+  data: new SlashCommandBuilder()
+    .setName('commands')
+    .setDescription('get extra info about all commands!')
     .addStringOption(option =>
       option.setName('command')
-        .setDescription('detailed info about a specified command')),
-	async execute(interaction) {
+      .setDescription('detailed info about a specified command')),
+  async execute(interaction) {
 
     arg = interaction.options.getString('command');
 
     var textToUser = 'Something went wrong'
 
-    if(!arg){
+    if (!arg) {
       filename = './commandsInfo/all.txt'
-        fs.readFile(filename, 'utf8', function(err, data) {
+      fs.readFile(filename, 'utf8', function (err, data) {
 
-          if(err){
-            textToUser="Could not find info for " + arg
-            interaction.reply(textToUser)
+        if (err) {
+          textToUser = "Could not find info for " + arg
+          interaction.reply(textToUser)
 
-          } else {
-            textToUser = 'Available commands: \n' + data
-            interaction.reply(textToUser)
-          }
-        });
-        
+        } else {
+          textToUser = 'Available commands: \n' + data
+          interaction.reply(textToUser)
+        }
+      });
+
       return;
     }
 
-    try{
-        if(arg.search('/') !== -1){
-          console.log('WARNING, ATTEMPT OF UNAUTHORIZED FILE ACCESS ATTEMPTED\n')
-          throw err
-        }
-        
-        filename = './commandsInfo/' + arg + '.txt'
-        fs.readFile(filename, 'utf8', function(err, data) {
+    try {
+      if (arg.search('/') !== -1) {
+        console.log('WARNING, ATTEMPT OF UNAUTHORIZED FILE ACCESS ATTEMPTED\n')
+        throw err
+      }
 
-          if(err){
-            textToUser="Could not find info for " + arg
-            interaction.reply(textToUser)
-            //makeRequest(chatbotToken, event, textToUser)
+      filename = './commandsInfo/' + arg + '.txt'
+      fs.readFile(filename, 'utf8', function (err, data) {
 
-          } else {
-            textToUser = data
-            if(arg === 'all'){
-              textToUser = 'Available commands: \n' + textToUser
-            }
-            interaction.reply(textToUser)
-            //makeRequest(chatbotToken, event, textToUser)
+        if (err) {
+          textToUser = "Could not find info for " + arg
+          interaction.reply(textToUser)
+
+        } else {
+          textToUser = data
+          if (arg === 'all') {
+            textToUser = 'Available commands: \n' + textToUser
           }
-          
-        });
-        
-    } catch(error) {
-        textToUser="Could not find info for " + arg
-        interaction.reply(textToUser)
+          interaction.reply(textToUser)
+        }
+
+      });
+
+    } catch (error) {
+      textToUser = "Could not find info for " + arg
+      interaction.reply(textToUser)
     }
-	},
+  },
 };
