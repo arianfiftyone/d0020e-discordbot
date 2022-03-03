@@ -8,8 +8,8 @@ module.exports = {
         .setDescription('Gives FLUFF!'),
     
     async execute(interaction) {
-        await interaction.deferReply();
+        //await interaction.deferReply();
 		const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
-		interaction.editReply({ files: [file] })
+		await interaction.reply({ files: [file] })
     }
 }
