@@ -29,7 +29,7 @@ module.exports = {
                 .setTitle('Your daily inspiration')
                 .addField(
                     `${quote}`,
-                    `${interaction.user}`,
+                    'Keep your head up: ' + `${interaction.user}`,
                     true
                 )
             interaction.editReply({ embeds: [newQuoteEmbed] });
