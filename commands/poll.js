@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { MessageActionRow, MessageButton, MessageEmbed, MessageComponentInteraction, Message} = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { MessageActionRow, MessageButton, MessageEmbed} = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -33,28 +33,16 @@ module.exports = {
         )
         .addComponents(
             new MessageButton()
-                .setCustomId('results')
+                .setCustomId('pollresults')
                 .setEmoji('🔨')
                 .setLabel('Results')
                 .setStyle('PRIMARY')
         )
         
         const questionEmbed = new MessageEmbed()
-            .setColor("BLUE")
+            .setColor('BLUE')
             .setTitle(`${interaction.options.getString('question')}`)
             .setDescription('Click on "YES/NO" to register your vote')
-            .addFields(
-                {
-                    name: 'Votes on YES:',
-                    value: String('0'),
-                    inline: true
-                },
-                {
-                    name: 'Votes on NO:',
-                    value: String('0'),
-                    inline: true
-                },
-            );
 
         
         await interaction.reply({content: `${interaction.options.getString('question')}`, embeds: [questionEmbed], components: [row] })

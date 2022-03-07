@@ -9,8 +9,7 @@ module.exports = {
 
         console.log(`${client.user.tag} is online!`);
 
-        const CLIENT_ID = client.user.id; //gets current bots client ID.
-
+        const CLIENT_ID = client.user.id;
         const rest = new REST({
             version: '10',
         }).setToken(process.env.BOT_TOKEN);
