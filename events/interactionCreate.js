@@ -1,7 +1,13 @@
+const buttonHandler = require("../handlers/buttonHandler.js");
 
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction) {
+
+        if (interaction.isButton()) {
+            console.log("Interaction button");
+            buttonHandler(interaction.component, interaction);
+        }
         
         if (!interaction.isCommand()) return;
 

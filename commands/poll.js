@@ -34,7 +34,7 @@ module.exports = {
         .addComponents(
             new MessageButton()
                 .setCustomId('results')
-                // .setEmoji('')
+                .setEmoji('🔨')
                 .setLabel('Results')
                 .setStyle('PRIMARY')
         )
