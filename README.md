@@ -44,7 +44,7 @@ To run the completed Chatbot locally, follow these steps,
 4. After running step three your terminal should output:
 
   `
-  Connecting to database...
+  Connecting to database... <br />
   Connected to database
   BotApplicationName#BotID is online!
   Succesfully registered commands locally.
