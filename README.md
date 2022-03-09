@@ -43,10 +43,10 @@ To run the completed Chatbot locally, follow these steps,
   
 4. After running step three your terminal should output:
 
-  `Connecting to database...`<br />
-  `Connected to database` <br />
-  `BotApplicationName#BotID is online!`<br />
-  `Succesfully registered commands locally.`<br />
+   `Connecting to database...`<br />
+   `Connected to database` <br />
+   `BotApplicationName#BotID is online!`<br />
+   `Succesfully registered commands locally.`<br />
   
 5. On your Discord Developer Dashboard, click on OAuth2 > URL Generator:
 
