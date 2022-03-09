@@ -4,7 +4,7 @@ The use of this app is a subject to [Discords Terms of Use](https://discord.com/
 
 This is a schoolproject in the course 'D0020E - Projekt i Datateknik' using the [Discord Chatbot NPM Package](https://discord.js.org/#/)
 
-![Chatbot for Discord]()
+![Chatbot for Discord](https://avatars.githubusercontent.com/u/26492485?s=200&v=4)
 
 ## Prerequisites
 1. [A free Discord account](https://discord.com/developers)
