@@ -13,7 +13,7 @@ let mpollDict = {
 }
 
 async function pollHandler(component, interaction) {
-    if (component.customId === 'yes') {
+    if (component.customId === 'yes') { 
         pollYes++;
         ephemeralReply(interaction);
     } else if (component.customId === 'no') {
