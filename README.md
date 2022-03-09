@@ -60,7 +60,7 @@ To run the completed Chatbot locally, follow these steps,
      
 6. Now that your Chatbot is installed on your Discord account, go to a Discord Server and type:
 
-   `/`
+   `/commands all`
    
    and you should see a list of all available commands for the bot.
    
