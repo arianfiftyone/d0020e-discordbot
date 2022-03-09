@@ -1,4 +1,7 @@
-get weather data from a specified city
+Get weather data from a specified place
+
+arguments:
+place of description
 
 usage in chat:
 /weather [city]

@@ -1,0 +1,10 @@
+Changes the channel which welcomes new users who join the Discord guild.
+
+arguments:
+channel to choose from in the Discord guild.
+
+usage in chat:
+/setwelcomechannel [#channel]
+
+example:
+/setwelcomechannel #new-members

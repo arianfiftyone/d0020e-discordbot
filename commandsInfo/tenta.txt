@@ -1,0 +1,10 @@
+Displays the date of a specific examination in a course.
+
+arguments:
+The courseid to display the examination from.
+
+usage in chat:
+/tenta [courseid]
+
+example:
+/tenta S0001M

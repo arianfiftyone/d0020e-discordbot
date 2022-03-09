@@ -1,0 +1,10 @@
+The bot randomly generates a picture of a cat.
+
+arguments:
+no arguments needed
+
+usage in chat:
+/cat
+
+example:
+/cat

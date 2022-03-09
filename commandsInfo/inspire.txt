@@ -1,0 +1,10 @@
+the bot connects to the api https://zenquotes.io/api/random which randomly generates a daily inspirational quote.
+
+arguments:
+no arguments needed
+
+usage in chat:
+/inspire
+
+example:
+/inspire

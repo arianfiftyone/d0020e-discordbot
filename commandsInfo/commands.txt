@@ -1,5 +1,5 @@
-get information about how to use the different commands.
-write 'commands' or 'commands all' to list available commands
+Get information about how to use the different commands.
+Write 'commands' or 'commands all' to list available commands
 
 flags: 
 all

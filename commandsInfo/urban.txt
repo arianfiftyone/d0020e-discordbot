@@ -1,0 +1,10 @@
+The generates a specific description of given term from Urbandictionary.
+
+arguments:
+something to be described.
+
+usage in chat:
+/urban [something]
+
+example:
+/urban something

@@ -1,9 +1,14 @@
+cat
 coinflip
 commands
 info
+inspire
 multipoll
 poll
 qr
 repeat
 rps
+setwelcomechannel
+tenta
+urban
 weather
