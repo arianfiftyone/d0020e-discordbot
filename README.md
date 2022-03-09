@@ -47,21 +47,23 @@ To run the completed Chatbot locally, follow these steps,
   `Connected to database` <br />
   `BotApplicationName#BotID is online!`<br />
   `Succesfully registered commands locally.`<br />
-  `
   
 5. On your Discord Developer Dashboard, click on OAuth2 > URL Generator:
 
-  In the **SCOPES**,section make your **bot** and **application.commands** are checked.
-  In the **BOT PERMISSIONS** section, choose **Administrator**. This will give your bot administrative permission, use this wisely. 
-
-  After that, your app is ready to be installed!
-  
-  In the **GENERATED URL** copy the URL and paste it in a browser. Choose onto which server the bot should enter and proceed.
+   In the **SCOPES**, section make your **bot** and **application.commands** are checked. <br />
    
+   In the **BOT PERMISSIONS** section, choose **Administrator**. This will give your bot administrative permission, use this wisely. 
+
+   After that, your app is ready to be installed!
+  
+   In the **GENERATED URL** copy the URL and paste it in a browser. Choose onto which server the bot should enter and proceed.
+     
 6. Now that your Chatbot is installed on your Discord account, go to a Discord Server and type:
 
    `/`
    
    and you should see a list of all available commands for the bot.
+   
+   ENJOY!
 
 
