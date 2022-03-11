@@ -58,7 +58,7 @@ To run the completed Chatbot locally, follow these steps,
   
    In the **GENERATED URL** copy the URL and paste it in a browser. Choose onto which server the bot should enter and proceed.
      
-6. Now that your Chatbot is installed on your Discord account, go to a Discord Server and type:
+6. Now that your Chatbot is installed on your Discord server, go to a Discord Server and type:
 
    `/commands all`
    
