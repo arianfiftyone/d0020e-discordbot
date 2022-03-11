@@ -65,5 +65,6 @@ To run the completed Chatbot locally, follow these steps,
    and you should see a list of all available commands for the bot.
    
    ENJOY!
+   
 
 
